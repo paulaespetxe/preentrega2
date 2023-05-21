@@ -1,4 +1,4 @@
-class usuarios{
+class Usuarios{
   constructor(nombre,email,direccion){
     this.nombre = nombre;
     this.email = email;
