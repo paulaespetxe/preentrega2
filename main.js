@@ -1,13 +1,13 @@
 let productos = [
-{nombre: "Lemon pie", precio: 200},
-{nombre: "Pasta frola", precio: 150},
-{nombre: "Tarta de frutilla",precio: 250},
-{nombre: "bizcochitos",precio: 300},
-{nombre: "pepas",precio: 350},
-{nombre: "scons",precio: 370},
-{nombre: "alfajor de chocolate blanco",precio: 400},
-{nombre: "alfajor de merengue",precio: 450},
-{nombre: "alfajor de chocolate con leche",precio: 420},
+{id :1 ,nombre: "Lemon pie", precio: 200},
+{id :2, nombre: "Pasta frola", precio: 150},
+{id: 3, nombre: "Tarta de frutilla",precio: 250},
+{id:4 , nombre: "bizcochitos",precio: 300},
+{id: 5,nombre: "pepas",precio: 350},
+{id:6,nombre: "scons",precio: 370},
+{id:7,nombre: "alfajor de chocolate blanco",precio: 400},
+{id: 8,nombre: "alfajor de merengue",precio: 450},
+{id: 9, nombre: "alfajor de chocolate con leche",precio: 420},
 ];
 
 localStorage.setItem("productos", JSON.stringify(productos));
@@ -36,6 +36,7 @@ const buscar = (nombre) => {
 
 let formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
     let inputs = e.target.children;
     buscar(inputs[0].value);
 })
