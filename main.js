@@ -1,72 +1,42 @@
-class Usuarios{
-  constructor(nombre,email,direccion){
-    this.nombre = nombre;
-    this.email = email;
-    this.direccion= direccion;
+let productos = [
+{nombre: "Lemon pie", precio: 200},
+{nombre: "Pasta frola", precio: 150},
+{nombre: "Tarta de frutilla",precio: 250},
+{nombre: "bizcochitos",precio: 300},
+{nombre: "pepas",precio: 350},
+{nombre: "scons",precio: 370},
+{nombre: "alfajor de chocolate blanco",precio: 400},
+{nombre: "alfajor de merengue",precio: 450},
+{nombre: "alfajor de chocolate con leche",precio: 420},
+];
 
-  }
-}
-const usuario1 = new usuarios("paula","paula@hotmail.com","catamarca 124");
-const usuario2 = new usuarios("agustina","agus@outlook.com","azopardo 456");
-const arrayUsuarios = [];
-arrayUsuarios.push(usuario1);
-arrayUsuarios.push(usuario2);
+localStorage.setItem("productos", JSON.stringify(productos));
 
+// productos.forEach((producto) => {
+//     let div = document.createElement("div");
+//     div.innerHTML = 
+//     `
+//     <h2>Nombre: ${producto.nombre}</h2>
+//     <p>Precio: ${producto.precio}</p>
+//     <hr />
+//     `;
 
-let envio;
+//     document.body.append(div);
+// });
+const buscar = (nombre) => {
+    let productosStorage = localStorage.getItem("productos");
+    let productos = JSON.parse(productosStorage);
 
-function saludo() {
-  alert("Bienvenidos a Panaderia en el Camino");
-  let compra = parseInt(prompt("Si desea iniciar sesion ingrese 4 sino Ingrese una opcion de producto 1)Tartas 2)Galletitas 3)Alfajores"));
-  return compra;
-}
+    let buscarProducto = {
+        nombre: nombre,
+    };
 
-function tartas() {
+    productos.find(buscarProducto);
+};
 
-
-      let porcion = (prompt("Ingrese que porcion de tarta desea: *lemon pie *pasta frola *tarta de frutilla"));
-if(porcion==="lemon pie") alert("porcion lemon pie $200");
-else if(porcion==="pasta frola") alert("porcion pasta frola $150");
-else if(porcion==="tarta de frutilla") alert("porcion tarta de frutillas $180");
-else alert("tarta sin stock");}
-
-
-function galletitas() {
- let paquete = (prompt("Ingrese que paquete de galletitas desea: *bizcochitos *pepas *scones"));
-if(paquete==="bizcochitos") alert("paquete de bizcochitos $300");
-else if(paquete==="pepas") alert("paquete de pepas $200");
-else if(paquete==="scones") alert("paquete de scones $250");
-else alert("galletitas sin stock");}
-
-function alfajores(){
-  let alfajor = (prompt("Ingrese el sabor de alfajor que desea : *chocolate blanco *chocolate con leche *merengue"));
-  if (alfajor==="chocolate blanco") alert("Alfajor cb $300 c/u");
-  else if(alfajor==="chocolate con leche") alert("Alfajor ccl $310 c/u");
-  else if(alfajor==="merengue")alert("Alfajor merengue $400 c/u");
-  else alert("Alfajor sin stock");
-}
-function inicioSecion(){
-  envio = prompt("Si ya esta registrado ingrese su email, si no ingrese su nombre y direccion de envio");
-  let usuario = arrayUsuarios.find((usuario) => usuario.email === email);
-  alert(usuario);
-}
-
-
-let opcion = saludo();
-switch (opcion) {
-  case 1:
-    tartas();
-    break;
-  case 2:
-    galletitas();
-    break;
-  case 3:
-    alfajores();
-    break;
-    case 4:
-    inicioSecion();
-    break;
-
-}
-
+let formulario = document.getElementById("formulario");
+formulario.addEventListener("submit", (e) => {
+    let inputs = e.target.children;
+    buscar(inputs[0].value);
+})
 
